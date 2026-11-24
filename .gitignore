@@ -1,0 +1,16 @@
+# Backend secrets
+Springbackend/task_manager/src/main/resources/application.properties
+
+# Frontend environment files
+ReactFrontend/.env
+ReactFrontend/.env.*
+!ReactFrontend/.env.example
+
+# Backend environment files
+Springbackend/task_manager/.env
+Springbackend/task_manager/.env.*
+
+# Build files
+ReactFrontend/node_modules/
+ReactFrontend/dist/
+Springbackend/task_manager/target/

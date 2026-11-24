@@ -7,3 +7,4 @@ dist-ssr
 logs
 *.log
 npm-debug.log*
+Springbackend/task_manager/src/main/resources/application.properties
