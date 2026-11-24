@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --color-paper: #f1f3ee;
+  --color-surface: #ffffff;
+  --color-ink: #182420;
+  --color-muted: #5b6a61;
+  --color-line: #dbe1d8;
+
+  --color-cobalt: #2d4bd8;
+  --color-cobalt-deep: #2239ab;
+  --color-cobalt-soft: #8ba1ff;
+
+  --color-pending: #8a5a10;
+  --color-progress: #0a625d;
+  --color-done: #386131;
+  --color-danger: #a63a2c;
+  --color-danger-deep: #872c20;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-line);
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    background: #c7d1ff;
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl border border-line bg-white;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .field-input {
+    @apply w-full rounded-lg border border-line bg-white px-3 py-2.5 text-[15px] text-ink transition-colors placeholder:text-muted/55 focus:border-cobalt focus:outline-none focus:ring-2 focus:ring-cobalt/15 disabled:cursor-not-allowed disabled:bg-paper;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-[13px] text-danger;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-primary {
+    @apply bg-cobalt text-white hover:bg-cobalt-deep;
+  }
+
+  .btn-secondary {
+    @apply border border-line bg-white text-ink hover:bg-paper;
+  }
+
+  .btn-ghost {
+    @apply text-muted hover:bg-paper hover:text-ink;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-danger-deep;
+  }
+
+  .icon-btn {
+    @apply inline-grid h-9 w-9 place-items-center rounded-lg text-muted transition-colors hover:bg-paper hover:text-ink disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 200ms ease-out;
+}
+
+.animate-overlay-in {
+  animation: overlay-in 150ms ease-out;
+}
+
+.animate-panel-in {
+  animation: panel-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-toast-in,
+  .animate-overlay-in,
+  .animate-panel-in {
+    animation: none;
+  }
+}
